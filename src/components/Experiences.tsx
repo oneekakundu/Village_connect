@@ -36,7 +36,7 @@ const Experiences: React.FC = () => {
       icon: Music,
       color: 'from-gold-500 to-gold-600',
       villages: 87,
-      image: 'https://images.pexels.com/photos/1190298/pexels-photo-1190298.jpeg?auto=compress&cs=tinysrgb&w=400',
+      image: 'https://travelogyindia.b-cdn.net/blog/wp-content/uploads/2018/08/Dandi-Gair-Dance-Marwar-Festival.jpg ',
       duration: '2 hours',
       price: '₹600',
       highlights: ['Live performances', 'Interactive sessions', 'Traditional instruments'],
