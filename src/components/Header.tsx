@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Menu, X, Globe, MapPin, Phone, User, Heart, LogOut } from 'lucide-react';
+import { Menu, X, Globe, MapPin, Phone, User, LogOut } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import AuthModal from './AuthModal';
@@ -57,7 +57,7 @@ const Header: React.FC<HeaderProps> = ({ currentLanguage, onLanguageChange }) =>
   return (
     <header className="bg-primary-900 shadow-xl sticky top-0 z-50 border-b-2 border-accent-500 backdrop-blur-sm bg-opacity-95">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
+        <div className="flex justify-between items-center h-20">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-3 group">
             <div className="bg-gradient-to-br from-accent-500 to-emerald-500 p-2 rounded-full shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-110">
@@ -80,6 +80,7 @@ const Header: React.FC<HeaderProps> = ({ currentLanguage, onLanguageChange }) =>
               Home
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent-400 transition-all duration-300 group-hover:w-full"></span>
             </Link>
+            <div className="w-4"></div> {/* Spacing between Home and No Middlemen */}
             {menuItems.map((item) => (
               <button
                 key={item.name}
@@ -93,7 +94,8 @@ const Header: React.FC<HeaderProps> = ({ currentLanguage, onLanguageChange }) =>
           </nav>
 
           {/* Right side actions */}
-          <div className="flex items-center space-x-2">
+          <div className="flex items-center space-x-4">
+            <div className="w-4"></div> {/* Spacing between About Us and English */}
             {/* Language Selector */}
             <div className="relative">
               <button
@@ -105,7 +107,7 @@ const Header: React.FC<HeaderProps> = ({ currentLanguage, onLanguageChange }) =>
                   {languages.find(lang => lang.code === currentLanguage)?.native}
                 </span>
               </button>
-              
+
               {isLanguageOpen && (
                 <div className="absolute right-0 mt-2 w-48 bg-primary-800 rounded-xl shadow-2xl border border-accent-500 z-20 max-h-64 overflow-y-auto animate-scale-in">
                   {languages.map((lang) => (
@@ -127,13 +129,16 @@ const Header: React.FC<HeaderProps> = ({ currentLanguage, onLanguageChange }) =>
               )}
             </div>
 
-            {/* Emergency Contact */}
-            <div className="hidden lg:flex items-center space-x-2 text-gold-400 bg-primary-800 px-3 py-2 rounded-lg border border-slate-600">
-              <Phone className="w-4 h-4" />
-              <span className="text-sm">+91-1800-VILLAGE</span>
+            {/* ⭐ Customer Care */}
+            <div className="hidden lg:flex flex-col items-start justify-center px-4 py-2 bg-gradient-to-r from-yellow-500 to-amber-500 rounded-xl shadow-md border border-yellow-300 animate-pulse transition-all duration-300 hover:scale-105 whitespace-nowrap">
+              <span className="text-xs text-white font-semibold uppercase leading-none">Customer Care</span>
+              <div className="flex items-center space-x-2">
+                <Phone className="w-4 h-4 text-white" />
+                <span className="text-white font-bold tracking-wide text-sm">+91-1800-VILLAGE</span>
+              </div>
             </div>
 
-            {/* User Profile or Login */}
+            {/* User Login/Profile */}
             {user ? (
               <div className="flex items-center space-x-2">
                 <div className="flex items-center space-x-2 bg-gradient-to-r from-accent-500 to-emerald-500 text-white px-3 py-2 rounded-full shadow-lg hover:shadow-xl transition-all duration-300">
@@ -144,10 +149,11 @@ const Header: React.FC<HeaderProps> = ({ currentLanguage, onLanguageChange }) =>
                 </div>
                 <button
                   onClick={handleLogout}
-                  className="p-2 text-slate-200 hover:text-accent-400 transition-colors hover:bg-primary-800 rounded-lg"
+                  className="flex items-center space-x-2 bg-red-500 hover:bg-red-600 text-white px-3 py-2 rounded-full transition-all duration-300"
                   title="Logout"
                 >
                   <LogOut className="w-4 h-4" />
+                  <span className="hidden sm:inline text-sm font-medium">Logout</span>
                 </button>
               </div>
             ) : (
@@ -160,7 +166,7 @@ const Header: React.FC<HeaderProps> = ({ currentLanguage, onLanguageChange }) =>
               </button>
             )}
 
-            {/* Join Village Stay Button */}
+            {/* Join Button */}
             <Link
               to="/join-village-stay"
               className="hidden sm:flex items-center space-x-2 bg-gradient-to-r from-accent-500 to-emerald-500 text-white px-6 py-0 rounded-full hover:from-accent-400 hover:to-emerald-400 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 border border-accent-400 font-medium"
@@ -168,7 +174,7 @@ const Header: React.FC<HeaderProps> = ({ currentLanguage, onLanguageChange }) =>
               <span className="font-semibold">Join VillageStay</span>
             </Link>
 
-            {/* Mobile menu button */}
+            {/* Mobile menu */}
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="md:hidden flex items-center space-x-2 bg-primary-800 text-white px-3 py-2 rounded-lg hover:bg-primary-700 transition-all duration-300"
@@ -178,7 +184,7 @@ const Header: React.FC<HeaderProps> = ({ currentLanguage, onLanguageChange }) =>
           </div>
         </div>
 
-        {/* Mobile Navigation */}
+        {/* Mobile Menu */}
         {isMenuOpen && (
           <div className="md:hidden pb-4 animate-slide-up">
             <div className="space-y-2 bg-primary-800 rounded-xl p-4 mt-2">
@@ -217,9 +223,9 @@ const Header: React.FC<HeaderProps> = ({ currentLanguage, onLanguageChange }) =>
       </div>
 
       {/* Auth Modal */}
-      <AuthModal 
-        isOpen={isAuthModalOpen} 
-        onClose={() => setIsAuthModalOpen(false)} 
+      <AuthModal
+        isOpen={isAuthModalOpen}
+        onClose={() => setIsAuthModalOpen(false)}
       />
     </header>
   );

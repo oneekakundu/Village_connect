@@ -49,23 +49,23 @@ const DonationCard: React.FC = () => {
 
   return (
     <div className="fixed bottom-6 right-6 z-50">
-      <div className="bg-primary-200 rounded-2xl shadow-2xl border-2 border-accent-500 p-6 w-80 max-w-sm">
+      <div className="bg-white rounded-2xl shadow-2xl border-2 border-accent-500 p-6 w-80 max-w-sm">
         {/* Header */}
         <div className="flex items-center justify-between mb-4">
           <div className="flex items-center space-x-2">
             <Heart className="w-5 h-5 text-accent-500" />
-            <h3 className="font-bold text-gold-500">Support a Village</h3>
+            <h3 className="font-bold text-slate-800">Support a Village</h3>
           </div>
           <button
             onClick={() => setIsExpanded(false)}
-            className="text-gold-400 hover:text-accent-500 transition-colors"
+            className="text-slate-600 hover:text-accent-500 transition-colors"
           >
             <X className="w-5 h-5" />
           </button>
         </div>
 
         {/* Description */}
-        <p className="text-sm text-gold-400 mb-4">
+        <p className="text-sm text-slate-700 mb-4">
           Help us improve rural infrastructure and support village communities.
         </p>
 
@@ -86,12 +86,12 @@ const DonationCard: React.FC = () => {
                   selectedAmount === option.amount ? 'bg-accent-500' : 'bg-primary-300'
                 }`}>
                   <option.icon className={`w-4 h-4 ${
-                    selectedAmount === option.amount ? 'text-primary-500' : 'text-gold-500'
+                    selectedAmount === option.amount ? 'text-white' : 'text-slate-700'
                   }`} />
                 </div>
                 <div className="flex-1 text-left">
-                  <div className="font-semibold text-gold-500">₹{option.amount}</div>
-                  <div className="text-xs text-gold-400">{option.impact}</div>
+                  <div className="font-semibold text-slate-800">₹{option.amount}</div>
+                  <div className="text-xs text-slate-600">{option.impact}</div>
                 </div>
               </div>
             </button>
@@ -100,14 +100,14 @@ const DonationCard: React.FC = () => {
 
         {/* Custom Amount */}
         <div className="mb-4">
-          <label className="block text-sm font-medium text-gold-500 mb-2">
+          <label className="block text-sm font-medium text-slate-800 mb-2">
             Custom Amount
           </label>
           <input
             type="number"
             value={selectedAmount}
             onChange={(e) => setSelectedAmount(Number(e.target.value))}
-            className="w-full px-3 py-2 bg-primary-300 border border-accent-500 rounded-lg text-gold-500 placeholder-gold-400 focus:outline-none focus:ring-2 focus:ring-accent-500 focus:border-accent-500"
+            className="w-full px-3 py-2 bg-white border border-accent-500 rounded-lg text-slate-800 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-accent-500 focus:border-accent-500"
             placeholder="Enter amount"
             min="50"
           />
@@ -126,7 +126,7 @@ const DonationCard: React.FC = () => {
         </button>
 
         {/* Note */}
-        <p className="text-xs text-gold-400 mt-2 text-center">
+        <p className="text-xs text-slate-600 mt-2 text-center">
           100% of donations go directly to village projects
         </p>
       </div>

@@ -23,15 +23,15 @@ function App() {
           />
           <Routes>
             <Route path="/" element={
-              <>
+              <div key="home">
                 <Hero />
                 <FeaturedVillages />
                 <Experiences />
                 <ImpactStats />
                 <DonationCard />
-              </>
+              </div>
             } />
-            <Route path="/join-village-stay" element={<JoinVillageStay />} />
+            <Route path="/join-village-stay" element={<JoinVillageStay key="join" />} />
           </Routes>
           <Footer />
         </div>

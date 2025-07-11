@@ -47,20 +47,14 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const storedToken = localStorage.getItem('token');
-    const storedUser = localStorage.getItem('user');
-    
-    if (storedToken && storedUser) {
-      setToken(storedToken);
-      setUser(JSON.parse(storedUser));
-    }
+    // Session-based authentication - no persistent login
+    // User must login every time they visit the site
     setLoading(false);
   }, []);
 
   const login = async (email: string, password: string) => {
     try {
-      // For now, simulate a successful login since the backend might not be running
-      // In production, this would connect to your actual API
+      // Session-based authentication - no persistent storage
       const mockUser = {
         id: '1',
         email: email,
@@ -74,15 +68,14 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         isEmailVerified: true
       };
 
-      const mockToken = 'mock-jwt-token-' + Date.now();
+      const mockToken = 'session-token-' + Date.now();
 
       // Simulate API delay
       await new Promise(resolve => setTimeout(resolve, 1000));
 
       setToken(mockToken);
       setUser(mockUser);
-      localStorage.setItem('token', mockToken);
-      localStorage.setItem('user', JSON.stringify(mockUser));
+      // No localStorage - session only
 
       // Uncomment this when your backend is ready:
       /*
@@ -109,8 +102,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       const data = await response.json();
       setToken(data.token);
       setUser(data.user);
-      localStorage.setItem('token', data.token);
-      localStorage.setItem('user', JSON.stringify(data.user));
+      // No localStorage - session only
       */
     } catch (error) {
       throw error;
@@ -119,8 +111,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   const register = async (userData: RegisterData) => {
     try {
-      // For now, simulate a successful registration since the backend might not be running
-      // In production, this would connect to your actual API
+      // Session-based authentication - no persistent storage
       const mockUser = {
         id: '1',
         email: userData.email,
@@ -134,15 +125,14 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         isEmailVerified: false
       };
 
-      const mockToken = 'mock-jwt-token-' + Date.now();
+      const mockToken = 'session-token-' + Date.now();
 
       // Simulate API delay
       await new Promise(resolve => setTimeout(resolve, 1000));
 
       setToken(mockToken);
       setUser(mockUser);
-      localStorage.setItem('token', mockToken);
-      localStorage.setItem('user', JSON.stringify(mockUser));
+      // No localStorage - session only
 
       // Uncomment this when your backend is ready:
       /*
@@ -169,8 +159,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       const data = await response.json();
       setToken(data.token);
       setUser(data.user);
-      localStorage.setItem('token', data.token);
-      localStorage.setItem('user', JSON.stringify(data.user));
+      // No localStorage - session only
       */
     } catch (error) {
       throw error;
@@ -180,8 +169,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const logout = () => {
     setUser(null);
     setToken(null);
-    localStorage.removeItem('token');
-    localStorage.removeItem('user');
+    // No localStorage to clear - session only
   };
 
   const value = {

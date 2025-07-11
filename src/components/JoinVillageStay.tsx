@@ -79,7 +79,7 @@ const JoinVillageStay: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-[60vh] py-12 px-4">
+    <div className="flex flex-col items-center justify-center min-h-screen pt-20 pb-12 px-4">
       <h1 className="text-3xl md:text-4xl font-bold mb-6 text-accent-700">Welcome! Join as a Host</h1>
       {!submitted ? (
         <form onSubmit={handleSubmit} className="bg-white p-8 rounded-xl shadow-lg w-full max-w-md flex flex-col gap-4">
