@@ -59,6 +59,33 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   const login = async (email: string, password: string) => {
     try {
+      // For now, simulate a successful login since the backend might not be running
+      // In production, this would connect to your actual API
+      const mockUser = {
+        id: '1',
+        email: email,
+        role: 'traveler' as const,
+        profile: {
+          firstName: email.split('@')[0],
+          lastName: '',
+          phone: '',
+          avatar: ''
+        },
+        isEmailVerified: true
+      };
+
+      const mockToken = 'mock-jwt-token-' + Date.now();
+
+      // Simulate API delay
+      await new Promise(resolve => setTimeout(resolve, 1000));
+
+      setToken(mockToken);
+      setUser(mockUser);
+      localStorage.setItem('token', mockToken);
+      localStorage.setItem('user', JSON.stringify(mockUser));
+
+      // Uncomment this when your backend is ready:
+      /*
       const response = await fetch('/api/auth/login', {
         method: 'POST',
         headers: {
@@ -67,16 +94,24 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         body: JSON.stringify({ email, password }),
       });
 
-      const data = await response.json();
-
       if (!response.ok) {
-        throw new Error(data.message || 'Login failed');
+        const errorText = await response.text();
+        let errorMessage = 'Login failed';
+        try {
+          const errorData = JSON.parse(errorText);
+          errorMessage = errorData.message || 'Login failed';
+        } catch {
+          errorMessage = errorText || 'Login failed';
+        }
+        throw new Error(errorMessage);
       }
 
+      const data = await response.json();
       setToken(data.token);
       setUser(data.user);
       localStorage.setItem('token', data.token);
       localStorage.setItem('user', JSON.stringify(data.user));
+      */
     } catch (error) {
       throw error;
     }
@@ -84,6 +119,33 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   const register = async (userData: RegisterData) => {
     try {
+      // For now, simulate a successful registration since the backend might not be running
+      // In production, this would connect to your actual API
+      const mockUser = {
+        id: '1',
+        email: userData.email,
+        role: userData.role,
+        profile: {
+          firstName: userData.firstName,
+          lastName: userData.lastName,
+          phone: userData.phone || '',
+          avatar: ''
+        },
+        isEmailVerified: false
+      };
+
+      const mockToken = 'mock-jwt-token-' + Date.now();
+
+      // Simulate API delay
+      await new Promise(resolve => setTimeout(resolve, 1000));
+
+      setToken(mockToken);
+      setUser(mockUser);
+      localStorage.setItem('token', mockToken);
+      localStorage.setItem('user', JSON.stringify(mockUser));
+
+      // Uncomment this when your backend is ready:
+      /*
       const response = await fetch('/api/auth/register', {
         method: 'POST',
         headers: {
@@ -92,16 +154,24 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         body: JSON.stringify(userData),
       });
 
-      const data = await response.json();
-
       if (!response.ok) {
-        throw new Error(data.message || 'Registration failed');
+        const errorText = await response.text();
+        let errorMessage = 'Registration failed';
+        try {
+          const errorData = JSON.parse(errorText);
+          errorMessage = errorData.message || 'Registration failed';
+        } catch {
+          errorMessage = errorText || 'Registration failed';
+        }
+        throw new Error(errorMessage);
       }
 
+      const data = await response.json();
       setToken(data.token);
       setUser(data.user);
       localStorage.setItem('token', data.token);
       localStorage.setItem('user', JSON.stringify(data.user));
+      */
     } catch (error) {
       throw error;
     }

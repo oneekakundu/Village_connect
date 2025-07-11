@@ -19,21 +19,22 @@ const JoinVillageStay: React.FC = () => {
   const [submitted, setSubmitted] = useState(false);
   const mapRef = useRef<any>(null);
 
-  // Search for locations using Nominatim
+  // Search for locations using Nominatim with better search
   const handleLocationSearch = async (query: string) => {
     setSearchQuery(query);
-    if (query.length < 3) {
+    if (query.length < 2) {
       setPredictions([]);
       return;
     }
     try {
       const res = await axios.get('https://nominatim.openstreetmap.org/search', {
         params: {
-          q: query,
+          q: query + ', India',
           format: 'json',
           addressdetails: 1,
           countrycodes: 'in',
-          limit: 5,
+          limit: 8,
+          featuretype: 'city,village,hamlet',
         },
       });
       setPredictions(res.data);

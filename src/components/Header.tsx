@@ -59,7 +59,7 @@ const Header: React.FC<HeaderProps> = ({ currentLanguage, onLanguageChange }) =>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <div className="flex items-center space-x-3 group">
+          <Link to="/" className="flex items-center space-x-3 group">
             <div className="bg-gradient-to-br from-accent-500 to-emerald-500 p-2 rounded-full shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-110">
               <MapPin className="w-6 h-6 text-white" />
             </div>
@@ -69,10 +69,17 @@ const Header: React.FC<HeaderProps> = ({ currentLanguage, onLanguageChange }) =>
             <div className="hidden sm:block text-xs text-emerald-400 bg-emerald-500 bg-opacity-20 px-2 py-1 rounded-full border border-emerald-400">
               No Middlemen
             </div>
-          </div>
+          </Link>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
+            <Link
+              to="/"
+              className="text-slate-200 hover:text-accent-400 transition-all duration-300 font-medium relative group"
+            >
+              Home
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent-400 transition-all duration-300 group-hover:w-full"></span>
+            </Link>
             {menuItems.map((item) => (
               <button
                 key={item.name}
@@ -175,6 +182,13 @@ const Header: React.FC<HeaderProps> = ({ currentLanguage, onLanguageChange }) =>
         {isMenuOpen && (
           <div className="md:hidden pb-4 animate-slide-up">
             <div className="space-y-2 bg-primary-800 rounded-xl p-4 mt-2">
+              <Link
+                to="/"
+                className="block w-full text-left px-4 py-3 text-slate-200 hover:text-accent-400 hover:bg-primary-700 rounded-lg transition-all duration-200"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Home
+              </Link>
               {menuItems.map((item) => (
                 <button
                   key={item.name}
