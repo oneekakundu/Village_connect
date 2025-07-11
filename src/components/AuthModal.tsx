@@ -85,10 +85,10 @@ const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 bg-slate-900 bg-opacity-75 flex items-center justify-center z-50 p-4 backdrop-blur-sm">
-      <div className="bg-white rounded-2xl shadow-2xl w-full max-w-md max-h-[90vh] overflow-y-auto border border-accent-300 animate-scale-in">
+    <div className="fixed inset-0 bg-slate-900 bg-opacity-80 flex items-center justify-center z-[9999] p-4 backdrop-blur-sm">
+      <div className="bg-white rounded-2xl shadow-2xl w-full max-w-md max-h-[90vh] overflow-y-auto border-2 border-accent-300 animate-scale-in relative">
         {/* Header */}
-        <div className="flex items-center justify-between p-6 border-b border-slate-200 bg-gradient-to-r from-accent-50 to-emerald-50">
+        <div className="flex items-center justify-between p-6 border-b border-slate-200 bg-gradient-to-r from-primary-50 to-accent-50">
           <h2 className="text-2xl font-bold text-slate-800 font-serif">
             {isLogin ? 'Welcome Back' : 'Join VillageStay'}
           </h2>
@@ -97,7 +97,7 @@ const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose }) => {
               onClose();
               resetForm();
             }}
-            className="text-slate-600 hover:text-accent-600 transition-colors p-1 hover:bg-accent-100 rounded-full"
+            className="text-slate-600 hover:text-accent-600 transition-colors p-2 hover:bg-accent-100 rounded-full"
           >
             <X className="w-6 h-6" />
           </button>
@@ -143,13 +143,13 @@ const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose }) => {
           )}
 
           {/* Form */}
-          <form onSubmit={handleSubmit} className="space-y-4">
+          <form onSubmit={handleSubmit} className="space-y-5">
             {/* Name fields for registration */}
             {!isLogin && (
               <div className="grid grid-cols-2 gap-3 animate-fade-in">
                 <div>
-                  <label className="block text-sm font-medium text-slate-700 mb-1">
-                    First Name
+                  <label className="block text-sm font-medium text-slate-700 mb-2">
+                    First Name *
                   </label>
                   <input
                     type="text"
@@ -157,13 +157,13 @@ const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose }) => {
                     value={formData.firstName}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-4 py-3 bg-slate-50 border border-slate-300 rounded-xl text-slate-800 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-accent-500 focus:border-accent-500 transition-all duration-300"
+                    className="w-full px-4 py-3 bg-slate-50 border-2 border-slate-300 rounded-xl text-slate-800 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-accent-500 focus:border-accent-500 transition-all duration-300"
                     placeholder="First name"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-slate-700 mb-1">
-                    Last Name
+                  <label className="block text-sm font-medium text-slate-700 mb-2">
+                    Last Name *
                   </label>
                   <input
                     type="text"
@@ -171,7 +171,7 @@ const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose }) => {
                     value={formData.lastName}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-4 py-3 bg-slate-50 border border-slate-300 rounded-xl text-slate-800 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-accent-500 focus:border-accent-500 transition-all duration-300"
+                    className="w-full px-4 py-3 bg-slate-50 border-2 border-slate-300 rounded-xl text-slate-800 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-accent-500 focus:border-accent-500 transition-all duration-300"
                     placeholder="Last name"
                   />
                 </div>
@@ -180,8 +180,8 @@ const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose }) => {
 
             {/* Email */}
             <div className="animate-fade-in">
-              <label className="block text-sm font-medium text-slate-700 mb-1">
-                Email Address
+              <label className="block text-sm font-medium text-slate-700 mb-2">
+                Email Address *
               </label>
               <div className="relative">
                 <Mail className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-slate-500" />
@@ -191,7 +191,7 @@ const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose }) => {
                   value={formData.email}
                   onChange={handleInputChange}
                   required
-                  className="w-full pl-12 pr-4 py-3 bg-slate-50 border border-slate-300 rounded-xl text-slate-800 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-accent-500 focus:border-accent-500 transition-all duration-300"
+                  className="w-full pl-12 pr-4 py-3 bg-slate-50 border-2 border-slate-300 rounded-xl text-slate-800 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-accent-500 focus:border-accent-500 transition-all duration-300"
                   placeholder="your@email.com"
                 />
               </div>
@@ -200,7 +200,7 @@ const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose }) => {
             {/* Phone for registration */}
             {!isLogin && (
               <div className="animate-fade-in">
-                <label className="block text-sm font-medium text-slate-700 mb-1">
+                <label className="block text-sm font-medium text-slate-700 mb-2">
                   Phone Number
                 </label>
                 <div className="relative">
@@ -210,7 +210,7 @@ const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose }) => {
                     name="phone"
                     value={formData.phone}
                     onChange={handleInputChange}
-                    className="w-full pl-12 pr-4 py-3 bg-slate-50 border border-slate-300 rounded-xl text-slate-800 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-accent-500 focus:border-accent-500 transition-all duration-300"
+                    className="w-full pl-12 pr-4 py-3 bg-slate-50 border-2 border-slate-300 rounded-xl text-slate-800 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-accent-500 focus:border-accent-500 transition-all duration-300"
                     placeholder="+91 9876543210"
                   />
                 </div>
@@ -219,8 +219,8 @@ const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose }) => {
 
             {/* Password */}
             <div className="animate-fade-in">
-              <label className="block text-sm font-medium text-slate-700 mb-1">
-                Password
+              <label className="block text-sm font-medium text-slate-700 mb-2">
+                Password *
               </label>
               <div className="relative">
                 <Lock className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-slate-500" />
@@ -231,7 +231,7 @@ const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose }) => {
                   onChange={handleInputChange}
                   required
                   minLength={6}
-                  className="w-full pl-12 pr-12 py-3 bg-slate-50 border border-slate-300 rounded-xl text-slate-800 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-accent-500 focus:border-accent-500 transition-all duration-300"
+                  className="w-full pl-12 pr-12 py-3 bg-slate-50 border-2 border-slate-300 rounded-xl text-slate-800 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-accent-500 focus:border-accent-500 transition-all duration-300"
                   placeholder="••••••••"
                 />
                 <button
@@ -242,20 +242,23 @@ const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose }) => {
                   {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
                 </button>
               </div>
+              {!isLogin && (
+                <p className="text-xs text-slate-500 mt-1">Minimum 6 characters</p>
+              )}
             </div>
 
             {/* Error Message */}
             {error && (
-              <div className="bg-red-50 border border-red-300 text-red-700 px-4 py-3 rounded-xl text-sm animate-fade-in flex items-center space-x-2">
-                <X className="w-4 h-4" />
+              <div className="bg-red-50 border-2 border-red-300 text-red-700 px-4 py-3 rounded-xl text-sm animate-fade-in flex items-center space-x-2">
+                <X className="w-4 h-4 flex-shrink-0" />
                 <span>{error}</span>
               </div>
             )}
 
             {/* Success Message */}
             {success && (
-              <div className="bg-green-50 border border-green-300 text-green-700 px-4 py-3 rounded-xl text-sm animate-fade-in flex items-center space-x-2">
-                <CheckCircle className="w-4 h-4" />
+              <div className="bg-green-50 border-2 border-green-300 text-green-700 px-4 py-3 rounded-xl text-sm animate-fade-in flex items-center space-x-2">
+                <CheckCircle className="w-4 h-4 flex-shrink-0" />
                 <span>{success}</span>
               </div>
             )}
@@ -272,7 +275,9 @@ const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose }) => {
                   <span>Please wait...</span>
                 </>
               ) : (
-                <span>{isLogin ? 'Sign In' : 'Create Account'}</span>
+                <span className="text-lg font-semibold">
+                  {isLogin ? 'Sign In' : 'Create Account'}
+                </span>
               )}
             </button>
           </form>
@@ -285,11 +290,11 @@ const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose }) => {
                 setError('');
                 setSuccess('');
               }}
-              className="text-accent-600 hover:text-accent-500 transition-colors text-sm font-medium"
+              className="text-accent-600 hover:text-accent-500 transition-colors text-sm font-medium underline"
             >
               {isLogin 
-                ? "Don't have an account? Sign up" 
-                : "Already have an account? Sign in"
+                ? "Don't have an account? Sign up here" 
+                : "Already have an account? Sign in here"
               }
             </button>
           </div>
