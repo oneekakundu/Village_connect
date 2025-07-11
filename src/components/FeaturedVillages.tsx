@@ -13,6 +13,7 @@ const FeaturedVillages: React.FC = () => {
       rating: 4.9,
       reviews: 127,
       images: [
+         'https://tourly.in/wp-content/uploads/classified-listing/2024/08/hatibari-1.jpg',
         'https://images.pexels.com/photos/1271619/pexels-photo-1271619.jpeg?auto=compress&cs=tinysrgb&w=800',
         'https://images.pexels.com/photos/2166553/pexels-photo-2166553.jpeg?auto=compress&cs=tinysrgb&w=800',
         'https://images.pexels.com/photos/1007426/pexels-photo-1007426.jpeg?auto=compress&cs=tinysrgb&w=800',
@@ -35,6 +36,7 @@ const FeaturedVillages: React.FC = () => {
       rating: 4.8,
       reviews: 89,
       images: [
+        'https://tourly.in/wp-content/uploads/classified-listing/2024/08/hatibari-1.jpg', 
         'https://images.pexels.com/photos/1007426/pexels-photo-1007426.jpeg?auto=compress&cs=tinysrgb&w=800',
         'https://images.pexels.com/photos/2166553/pexels-photo-2166553.jpeg?auto=compress&cs=tinysrgb&w=800',
         'https://images.pexels.com/photos/1271619/pexels-photo-1271619.jpeg?auto=compress&cs=tinysrgb&w=800',
@@ -57,6 +59,7 @@ const FeaturedVillages: React.FC = () => {
       rating: 4.7,
       reviews: 156,
       images: [
+        'https://cultureandheritage.org/wp-content/uploads/2023/05/xyz-12.jpg',
         'https://images.pexels.com/photos/2166553/pexels-photo-2166553.jpeg?auto=compress&cs=tinysrgb&w=800',
         'https://images.pexels.com/photos/1271619/pexels-photo-1271619.jpeg?auto=compress&cs=tinysrgb&w=800',
         'https://images.pexels.com/photos/1007426/pexels-photo-1007426.jpeg?auto=compress&cs=tinysrgb&w=800',
