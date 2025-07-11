@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Menu, X, Globe, MapPin, Phone, User, Heart, LogOut } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import AuthModal from './AuthModal';
 
@@ -153,13 +154,20 @@ const Header: React.FC<HeaderProps> = ({ currentLanguage, onLanguageChange }) =>
               </button>
             )}
 
+            {/* Join Village Stay Button */}
+            <Link
+              to="/join-village-stay"
+              className="flex items-center space-x-2 bg-gradient-to-r from-accent-500 to-emerald-500 text-white px-6 py-2 rounded-full hover:from-accent-400 hover:to-emerald-400 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 border border-accent-400 font-medium"
+            >
+              <span className="font-semibold">Join VillageStay</span>
+            </Link>
+
             {/* Mobile menu button */}
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="flex items-center space-x-2 bg-gradient-to-r from-accent-500 to-emerald-500 text-white px-6 py-0 rounded-full hover:from-accent-400 hover:to-emerald-400 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 border border-accent-400 font-medium"
+              className="md:hidden flex items-center space-x-2 bg-primary-800 text-white px-3 py-2 rounded-lg hover:bg-primary-700 transition-all duration-300"
             >
               {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-              <span className="font-semibold">Join VillageStay</span>
             </button>
           </div>
         </div>
@@ -177,6 +185,13 @@ const Header: React.FC<HeaderProps> = ({ currentLanguage, onLanguageChange }) =>
                   {item.name}
                 </button>
               ))}
+              <Link
+                to="/join-village-stay"
+                className="block w-full text-left px-4 py-3 text-slate-200 hover:text-accent-400 hover:bg-primary-700 rounded-lg transition-all duration-200"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Join VillageStay
+              </Link>
               <div className="border-t border-accent-500 pt-3 mt-3">
                 <div className="flex items-center space-x-2 px-4 py-2 text-gold-400">
                   <Phone className="w-4 h-4" />
