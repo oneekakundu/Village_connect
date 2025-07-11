@@ -152,11 +152,11 @@ const Hero: React.FC = () => {
                     onChange={(e) => setSearchData({...searchData, guests: e.target.value})}
                     className="w-full text-white bg-transparent outline-none"
                   >
-                    <option value="1">1 traveler</option>
-                    <option value="2">2 travelers</option>
-                    <option value="3">3 travelers</option>
-                    <option value="4">4 travelers</option>
-                    <option value="5+">5+ travelers</option>
+                    <option value="1" className='text-black'>1 traveler</option>
+                    <option value="2" className='text-black'>2 travelers</option>
+                    <option value="3" className='text-black'>3 travelers</option>
+                    <option value="4" className='text-black'>4 travelers</option>
+                    <option value="5+" className='text-black'>5+ travelers</option>
                   </select>
                 </div>
               </div>

@@ -153,7 +153,7 @@ const Header: React.FC<HeaderProps> = ({ currentLanguage, onLanguageChange }) =>
             ) : (
               <button
                 onClick={() => setIsAuthModalOpen(true)}
-                className="flex items-center space-x-2 bg-gradient-to-r from-accent-500 to-emerald-500 text-white px-4 py-2 rounded-full hover:from-accent-400 hover:to-emerald-400 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
+                className="flex items-center space-x-2 bg-gradient-to-r from-accent-500 to-emerald-500 text-white px-6 py-0 rounded-full hover:from-accent-400 hover:to-emerald-400 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
               >
                 <User className="w-4 h-4" />
                 <span className="hidden sm:inline font-medium">Join Us</span>
@@ -163,7 +163,7 @@ const Header: React.FC<HeaderProps> = ({ currentLanguage, onLanguageChange }) =>
             {/* Join Village Stay Button */}
             <Link
               to="/join-village-stay"
-              className="hidden sm:flex items-center space-x-2 bg-gradient-to-r from-accent-500 to-emerald-500 text-white px-4 py-2 rounded-full hover:from-accent-400 hover:to-emerald-400 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 border border-accent-400 font-medium"
+              className="hidden sm:flex items-center space-x-2 bg-gradient-to-r from-accent-500 to-emerald-500 text-white px-6 py-0 rounded-full hover:from-accent-400 hover:to-emerald-400 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 border border-accent-400 font-medium"
             >
               <span className="font-semibold">Join VillageStay</span>
             </Link>
