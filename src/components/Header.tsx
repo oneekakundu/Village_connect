@@ -57,7 +57,7 @@ const Header: React.FC<HeaderProps> = ({ currentLanguage, onLanguageChange }) =>
   return (
     <header className="bg-primary-900 shadow-xl sticky top-0 z-50 border-b-2 border-accent-500 backdrop-blur-sm bg-opacity-95">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex gap-10 justify-between items-center h-16">
+        <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <div className="flex items-center space-x-3 group">
             <div className="bg-gradient-to-br from-accent-500 to-emerald-500 p-2 rounded-full shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-110">
@@ -86,7 +86,7 @@ const Header: React.FC<HeaderProps> = ({ currentLanguage, onLanguageChange }) =>
           </nav>
 
           {/* Right side actions */}
-          <div className="flex items-center space-x-4">
+          <div className="flex items-center space-x-2">
             {/* Language Selector */}
             <div className="relative">
               <button
@@ -121,15 +121,15 @@ const Header: React.FC<HeaderProps> = ({ currentLanguage, onLanguageChange }) =>
             </div>
 
             {/* Emergency Contact */}
-            <div className="hidden h-10 w-60 sm:flex items-center space-x-2 text-gold-400 bg-primary-800 px-3 py-2 rounded-lg border border-slate-600">
+            <div className="hidden lg:flex items-center space-x-2 text-gold-400 bg-primary-800 px-3 py-2 rounded-lg border border-slate-600">
               <Phone className="w-4 h-4" />
               <span className="text-sm">+91-1800-VILLAGE</span>
             </div>
 
             {/* User Profile or Login */}
             {user ? (
-              <div className="flex items-center space-x-3">
-                <div className="flex items-center space-x-3 bg-gradient-to-r from-accent-500 to-emerald-500 text-white px-4 py-2 rounded-full shadow-lg hover:shadow-xl transition-all duration-300">
+              <div className="flex items-center space-x-2">
+                <div className="flex items-center space-x-2 bg-gradient-to-r from-accent-500 to-emerald-500 text-white px-3 py-2 rounded-full shadow-lg hover:shadow-xl transition-all duration-300">
                   <User className="w-4 h-4" />
                   <span className="hidden sm:inline text-sm font-medium">
                     {user.profile.firstName} ({user.role})
@@ -146,18 +146,17 @@ const Header: React.FC<HeaderProps> = ({ currentLanguage, onLanguageChange }) =>
             ) : (
               <button
                 onClick={() => setIsAuthModalOpen(true)}
-                className="flex items-center space-x-2 bg-gradient-to-r from-accent-500 to-emerald-500 text-white px-0 py-0 rounded-full hover:from-accent-400 hover:to-emerald-400 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">
-                <div className="flex items-center space-x-3 bg-gradient-to-r from-accent-500 to-emerald-500 text-white px-10 py-1 rounded-full shadow-lg hover:shadow-xl transition-all duration-300  border-accent-400">
-                  <User className="w-4 h-10" />
-                  <span className="hidden h-10 w-10 sm:inline font-medium">Join Us</span>
-                </div>
+                className="flex items-center space-x-2 bg-gradient-to-r from-accent-500 to-emerald-500 text-white px-4 py-2 rounded-full hover:from-accent-400 hover:to-emerald-400 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
+              >
+                <User className="w-4 h-4" />
+                <span className="hidden sm:inline font-medium">Join Us</span>
               </button>
             )}
 
             {/* Join Village Stay Button */}
             <Link
               to="/join-village-stay"
-              className="flex items-center space-x-2 bg-gradient-to-r from-accent-500 to-emerald-500 text-white px-6 py-2 rounded-full hover:from-accent-400 hover:to-emerald-400 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 border border-accent-400 font-medium"
+              className="hidden sm:flex items-center space-x-2 bg-gradient-to-r from-accent-500 to-emerald-500 text-white px-4 py-2 rounded-full hover:from-accent-400 hover:to-emerald-400 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 border border-accent-400 font-medium"
             >
               <span className="font-semibold">Join VillageStay</span>
             </Link>
