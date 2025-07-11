@@ -12,7 +12,7 @@ const Experiences: React.FC = () => {
       icon: ChefHat,
       color: 'from-terracotta-500 to-terracotta-600',
       villages: 145,
-      image: 'https://images.pexels.com/photos/1109197/pexels-photo-1109197.jpeg?auto=compress&cs=tinysrgb&w=400',
+      image: 'https://img.freepik.com/premium-photo/traditional-cooking-methods-like-grilling-open-flame_198067-319188.jpg',
       duration: '2-3 hours',
       price: '₹800',
       highlights: ['Clay oven cooking', 'Secret family recipes', 'Organic ingredients'],
