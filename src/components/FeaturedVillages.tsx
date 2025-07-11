@@ -75,8 +75,7 @@ const FeaturedVillages: React.FC = () => {
       images: [
         'https://tourly.in/wp-content/uploads/classified-listing/2024/08/hatibari-1.jpg',        
         'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRcz0YX3PH0v_kd2_KUmDos60XXxK-SAhwyYg&s',
-        'https://www.team-bhp.com/forum/attachments/travelogues/2124222d1688003339t-west-bengal-treasure-tourists-img_20210221_180706.jpg',
-        'hhttps://i.ytimg.com/vi/SvJHL54t2-s/maxresdefault.jpg',
+        'https://www.team-bhp.com/forum/attachments/travelogues/2124222d1688003339t-west-bengal-treasure-tourists-img_20210221_180706.jpg'
       ],
       pricePerNight: 1500,
       hostName: 'Biju Gogoi',
