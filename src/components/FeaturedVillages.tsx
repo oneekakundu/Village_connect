@@ -1,9 +1,48 @@
 import React, { useState } from 'react';
-import { MapPin, Star, Users, Leaf, MessageSquare, Calendar, Heart, Eye, ArrowRight, Camera, Phone } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Heart, Camera, Phone, MapPin, Star, Leaf, Calendar, Eye } from 'lucide-react';
 
 const FeaturedVillages: React.FC = () => {
   const [favorites, setFavorites] = useState<number[]>([]);
   const [selectedVillage, setSelectedVillage] = useState<number | null>(null);
+  // Track current image index for each village
+  const [imageIndexes, setImageIndexes] = useState<{ [villageId: number]: number }>({});
+
+  const toggleFavorite = (villageId: number) => {
+    setFavorites(prev => 
+      prev.includes(villageId) 
+        ? prev.filter(id => id !== villageId)
+        : [...prev, villageId]
+    );
+  };
+
+  const handlePrevImage = (villageId: number, imagesLength: number) => {
+    setImageIndexes((prev) => ({
+      ...prev,
+      [villageId]: prev[villageId] === undefined
+        ? imagesLength - 1
+        : (prev[villageId] - 1 + imagesLength) % imagesLength,
+    }));
+  };
+
+  const handleNextImage = (villageId: number, imagesLength: number) => {
+    setImageIndexes((prev) => ({
+      ...prev,
+      [villageId]: prev[villageId] === undefined
+        ? 1 % imagesLength
+        : (prev[villageId] + 1) % imagesLength,
+    }));
+  };
+
+  const handleBookNow = (village: any) => {
+    console.log('Booking village:', village.name);
+    // Implement booking functionality
+    alert(`Booking ${village.name}! Redirecting to booking page...`);
+  };
+
+  const handleViewAllVillages = () => {
+    // Implement view all functionality
+    alert('Redirecting to all villages page with advanced filters and map view...');
+  };
 
   const villages = [
     {
@@ -13,9 +52,7 @@ const FeaturedVillages: React.FC = () => {
       rating: 4.9,
       reviews: 127,
       images: [
-         'https://www.nativeplanet.com/img/2016/08/1chandipur-29-1472453774.jpg',
-        'https://images.pexels.com/photos/1271619/pexels-photo-1271619.jpeg?auto=compress&cs=tinysrgb&w=800',
-        'https://images.pexels.com/photos/2166553/pexels-photo-2166553.jpeg?auto=compress&cs=tinysrgb&w=800',
+        'https://www.nativeplanet.com/img/2016/08/1chandipur-29-1472453774.jpg',
         'https://images.pexels.com/photos/1007426/pexels-photo-1007426.jpeg?auto=compress&cs=tinysrgb&w=800',
         'https://images.pexels.com/photos/1093038/pexels-photo-1093038.jpeg?auto=compress&cs=tinysrgb&w=800',
       ],
@@ -36,8 +73,7 @@ const FeaturedVillages: React.FC = () => {
       rating: 4.8,
       reviews: 89,
       images: [
-        'https://tourly.in/wp-content/uploads/classified-listing/2024/08/hatibari-1.jpg', 
-        'https://images.pexels.com/photos/1007426/pexels-photo-1007426.jpeg?auto=compress&cs=tinysrgb&w=800',
+        'https://tourly.in/wp-content/uploads/classified-listing/2024/08/hatibari-1.jpg',        
         'https://images.pexels.com/photos/2166553/pexels-photo-2166553.jpeg?auto=compress&cs=tinysrgb&w=800',
         'https://images.pexels.com/photos/1271619/pexels-photo-1271619.jpeg?auto=compress&cs=tinysrgb&w=800',
         'https://images.pexels.com/photos/1093038/pexels-photo-1093038.jpeg?auto=compress&cs=tinysrgb&w=800',
@@ -60,7 +96,6 @@ const FeaturedVillages: React.FC = () => {
       reviews: 156,
       images: [
         'https://cultureandheritage.org/wp-content/uploads/2023/05/xyz-12.jpg',
-        'https://images.pexels.com/photos/2166553/pexels-photo-2166553.jpeg?auto=compress&cs=tinysrgb&w=800',
         'https://images.pexels.com/photos/1271619/pexels-photo-1271619.jpeg?auto=compress&cs=tinysrgb&w=800',
         'https://images.pexels.com/photos/1007426/pexels-photo-1007426.jpeg?auto=compress&cs=tinysrgb&w=800',
         'https://images.pexels.com/photos/1093038/pexels-photo-1093038.jpeg?auto=compress&cs=tinysrgb&w=800',
@@ -76,25 +111,6 @@ const FeaturedVillages: React.FC = () => {
       specialFeature: 'Temple Architecture Tours',
     },
   ];
-
-  const toggleFavorite = (villageId: number) => {
-    setFavorites(prev => 
-      prev.includes(villageId) 
-        ? prev.filter(id => id !== villageId)
-        : [...prev, villageId]
-    );
-  };
-
-  const handleBookNow = (village: any) => {
-    console.log('Booking village:', village.name);
-    // Implement booking functionality
-    alert(`Booking ${village.name}! Redirecting to booking page...`);
-  };
-
-  const handleViewAllVillages = () => {
-    // Implement view all functionality
-    alert('Redirecting to all villages page with advanced filters and map view...');
-  };
 
   return (
     <section id="villages" className="py-20 bg-gradient-to-br from-slate-50 to-slate-100 relative overflow-hidden">
@@ -129,10 +145,36 @@ const FeaturedVillages: React.FC = () => {
               {/* Image Carousel */}
               <div className="relative overflow-hidden h-64">
                 <img
-                  src={village.images[0]}
+                  src={village.images[imageIndexes[village.id] ?? 0]}
                   alt={village.name}
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                 />
+                {/* Left Arrow */}
+                {village.images.length > 1 && (
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handlePrevImage(village.id, village.images.length);
+                    }}
+                    className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-70 hover:bg-opacity-100 p-2 rounded-full shadow-md z-10"
+                    aria-label="Previous image"
+                  >
+                    <ArrowLeft className="w-5 h-5 text-slate-700" />
+                  </button>
+                )}
+                {/* Right Arrow */}
+                {village.images.length > 1 && (
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleNextImage(village.id, village.images.length);
+                    }}
+                    className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-70 hover:bg-opacity-100 p-2 rounded-full shadow-md z-10"
+                    aria-label="Next image"
+                  >
+                    <ArrowRight className="w-5 h-5 text-slate-700" />
+                  </button>
+                )}
                 
                 {/* Image Counter */}
                 <div className="absolute top-4 left-4 bg-slate-800 bg-opacity-80 text-white px-3 py-1 rounded-full text-sm flex items-center space-x-1">
