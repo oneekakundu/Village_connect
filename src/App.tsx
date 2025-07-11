@@ -13,7 +13,7 @@ function App() {
 
   return (
     <AuthProvider>
-      <div className="min-h-screen bg-primary-500">
+      <div className="min-h-screen bg-slate-50">
         <Header 
           currentLanguage={currentLanguage} 
           onLanguageChange={setCurrentLanguage}
