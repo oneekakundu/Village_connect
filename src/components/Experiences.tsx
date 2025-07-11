@@ -72,7 +72,7 @@ const Experiences: React.FC = () => {
       icon: Users,
       color: 'from-terracotta-600 to-gold-500',
       villages: 201,
-      image: 'https://images.pexels.com/photos/1024960/pexels-photo-1024960.jpeg?auto=compress&cs=tinysrgb&w=400',
+      image: 'https://theculturemap.com/wp-content/uploads/2020/05/india-cultural-experience-festivals-ceremonies-960x755.jpeg',
       duration: '1-3 days',
       price: '₹3000',
       highlights: ['Family stays', 'Festival participation', 'Cultural exchange'],
