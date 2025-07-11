@@ -24,7 +24,7 @@ const Experiences: React.FC = () => {
       icon: PaintBucket,
       color: 'from-sage-500 to-sage-600',
       villages: 98,
-      image: 'https://images.pexels.com/photos/1124468/pexels-photo-1124468.jpeg?auto=compress&cs=tinysrgb&w=400',
+      image: 'https://paintphotographs.com/cdn/images/uploads/345af58b03ea30ca08eb80bc71f951de.jpg',
       duration: '3-4 hours',
       price: '₹1200',
       highlights: ['Pottery wheel training', 'Natural dyes', 'Take home crafts'],
