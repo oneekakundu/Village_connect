@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
+import apiService from '../services/api';
 
 interface User {
   id: string;
@@ -54,56 +55,10 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   const login = async (email: string, password: string) => {
     try {
-      // Session-based authentication - no persistent storage
-      const mockUser = {
-        id: '1',
-        email: email,
-        role: 'traveler' as const,
-        profile: {
-          firstName: email.split('@')[0],
-          lastName: '',
-          phone: '',
-          avatar: ''
-        },
-        isEmailVerified: true
-      };
-
-      const mockToken = 'session-token-' + Date.now();
-
-      // Simulate API delay
-      await new Promise(resolve => setTimeout(resolve, 1000));
-
-      setToken(mockToken);
-      setUser(mockUser);
-      // No localStorage - session only
-
-      // Uncomment this when your backend is ready:
-      /*
-      const response = await fetch('/api/auth/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ email, password }),
-      });
-
-      if (!response.ok) {
-        const errorText = await response.text();
-        let errorMessage = 'Login failed';
-        try {
-          const errorData = JSON.parse(errorText);
-          errorMessage = errorData.message || 'Login failed';
-        } catch {
-          errorMessage = errorText || 'Login failed';
-        }
-        throw new Error(errorMessage);
-      }
-
-      const data = await response.json();
+      const data = await apiService.login(email, password) as { token: string; user: User };
       setToken(data.token);
       setUser(data.user);
       // No localStorage - session only
-      */
     } catch (error) {
       throw error;
     }
@@ -111,56 +66,10 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   const register = async (userData: RegisterData) => {
     try {
-      // Session-based authentication - no persistent storage
-      const mockUser = {
-        id: '1',
-        email: userData.email,
-        role: userData.role,
-        profile: {
-          firstName: userData.firstName,
-          lastName: userData.lastName,
-          phone: userData.phone || '',
-          avatar: ''
-        },
-        isEmailVerified: false
-      };
-
-      const mockToken = 'session-token-' + Date.now();
-
-      // Simulate API delay
-      await new Promise(resolve => setTimeout(resolve, 1000));
-
-      setToken(mockToken);
-      setUser(mockUser);
-      // No localStorage - session only
-
-      // Uncomment this when your backend is ready:
-      /*
-      const response = await fetch('/api/auth/register', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(userData),
-      });
-
-      if (!response.ok) {
-        const errorText = await response.text();
-        let errorMessage = 'Registration failed';
-        try {
-          const errorData = JSON.parse(errorText);
-          errorMessage = errorData.message || 'Registration failed';
-        } catch {
-          errorMessage = errorText || 'Registration failed';
-        }
-        throw new Error(errorMessage);
-      }
-
-      const data = await response.json();
+      const data = await apiService.register(userData) as { token: string; user: User };
       setToken(data.token);
       setUser(data.user);
       // No localStorage - session only
-      */
     } catch (error) {
       throw error;
     }

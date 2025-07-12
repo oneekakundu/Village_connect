@@ -5,23 +5,22 @@ const helmet = require('helmet');
 const compression = require('compression');
 const morgan = require('morgan');
 const rateLimit = require('express-rate-limit');
-require('dotenv').config();
+require('dotenv').config({ path: './config.env' });
 
 const app = express();
 
 // Import routes
 const authRoutes = require('./routes/auth');
 const userRoutes = require('./routes/users');
-const villageRoutes = require('./routes/villages');
+const listingRoutes = require('./routes/listings');
 const bookingRoutes = require('./routes/bookings');
-const emailRoutes = require('./routes/email');
 
 // Middleware
 app.use(helmet());
 app.use(compression());
 app.use(morgan('combined'));
 app.use(cors({
-  origin: process.env.CORS_ORIGIN || 'http://localhost:5173',
+  origin: process.env.CORS_ORIGIN || 'http://localhost:5174',
   credentials: true
 }));
 
@@ -52,9 +51,8 @@ app.get('/health', (req, res) => {
 // API Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/users', userRoutes);
-app.use('/api/villages', villageRoutes);
+app.use('/api/listings', listingRoutes);
 app.use('/api/bookings', bookingRoutes);
-app.use('/api/email', emailRoutes);
 
 // Error handling middleware
 app.use((err, req, res, next) => {
