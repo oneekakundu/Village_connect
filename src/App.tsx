@@ -16,7 +16,7 @@ function App() {
   return (
     <AuthProvider>
       <Router>
-        <div className="min-h-screen bg-slate-50">
+        <div className="min-h-screen overflow-hidden bg-slate-50">
           <Header 
             currentLanguage={currentLanguage} 
             onLanguageChange={setCurrentLanguage}
