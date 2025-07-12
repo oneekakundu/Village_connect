@@ -108,7 +108,12 @@ const Hero: React.FC = () => {
               <div className="text-sm text-gold-400">Direct to Hosts</div>
             </div>
           </div>
-
+          <div className="flex justify-around w-100 text-xl">
+            <div className="">Location</div>
+            <div className="">Departure</div>
+            <div className="">Arrival</div>
+            <div className="">No. of People</div>
+          </div>
           {/* Enhanced Search Bar */}
           <div className="max-w-6xl mx-auto mb-8 animate-scale-in" style={{ animationDelay: '0.9s' }}>
             <div className="bg-slate-800 bg-opacity-80 backdrop-blur-lg rounded-2xl p-4 shadow-2xl border border-accent-500 hover:border-accent-400 transition-all duration-300">
