@@ -121,6 +121,7 @@ const FeaturedVillages: React.FC = () => {
       rating: 4.6,
       reviews: 142,
       images: [
+        'https://i.pinimg.com/originals/e7/9a/22/e79a22209c8c23f3289f0c27056f7dc3.gif',
         'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=800&h=600&fit=crop',
         'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=800&h=600&fit=crop',
         'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=800&h=600&fit=crop'
@@ -142,6 +143,7 @@ const FeaturedVillages: React.FC = () => {
       rating: 4.8,
       reviews: 178,
       images: [
+        'https://cdn.getyourguide.com/img/tour/5d45936b42076.jpeg/148.jpg',
         'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=800&h=600&fit=crop',
         'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=800&h=600&fit=crop',
         'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=800&h=600&fit=crop'
@@ -163,6 +165,7 @@ const FeaturedVillages: React.FC = () => {
       rating: 4.7,
       reviews: 165,
       images: [
+        'https://chamong.com/wp-content/uploads/2020/11/Maud-Tea-Garden.jpg',
         'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=800&h=600&fit=crop',
         'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=800&h=600&fit=crop',
         'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=800&h=600&fit=crop'
