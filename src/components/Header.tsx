@@ -57,7 +57,7 @@ const Header: React.FC<HeaderProps> = ({ currentLanguage, onLanguageChange }) =>
   return (
     <header className="bg-primary-900 shadow-xl sticky top-0 z-50 border-b-2 border-accent-500 backdrop-blur-sm bg-opacity-95">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-20">
+        <div className="flex gap-5 justify-between items-center h-20">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-3 group">
             <div className="bg-gradient-to-br from-accent-500 to-emerald-500 p-2 rounded-full shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-110">
@@ -75,7 +75,7 @@ const Header: React.FC<HeaderProps> = ({ currentLanguage, onLanguageChange }) =>
           <nav className="hidden md:flex items-center space-x-8">
             <Link
               to="/"
-              className="text-slate-200 hover:text-accent-400 transition-all duration-300 font-medium relative group"
+              className="text-slate-200 w-4 hover:text-accent-400 transition-all duration-300 font-medium relative group"
             >
               Home
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent-400 transition-all duration-300 group-hover:w-full"></span>

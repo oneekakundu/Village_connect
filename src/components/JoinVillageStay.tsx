@@ -111,7 +111,7 @@ const JoinVillageStay: React.FC = () => {
             )}
           </div>
           {/* Map Preview */}
-          <div className="h-64 border border-slate-300 rounded-lg overflow-hidden">
+          <div className="h-64 border z-0 border-slate-300 rounded-lg overflow-hidden">
             <MapContainer
               center={selectedLocation ? [selectedLocation.lat, selectedLocation.lng] : [DEFAULT_POSITION.lat, DEFAULT_POSITION.lng]}
               zoom={selectedLocation ? 12 : 5}
